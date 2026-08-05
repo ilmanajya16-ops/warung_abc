@@ -1,5 +1,5 @@
 <?php
-include 'config/koneksi.php'
+include 'config/koneksi.php';
 
 $nama = 'Administrator';
 $username = 'admin';
@@ -10,7 +10,7 @@ $sql = "INSERT INTO tbl_user (nama_lengkap, username, password, role)";
 $sql .= "VALUES  ('$nama','$username','$password','$role')";
 
 
-if (mysqli_query ($koneksi, $sql)){
+if (mysqli_query ($koneksi, $sql)) {
     echo'User admin berhasil dibuat. silahkan hapus file ini. ';
 } else {
     echo 'Gagal membuat user; '. mysqli_error($koneksi);
