@@ -1,0 +1,35 @@
+<?php
+
+include 'includes/cek_sesssion.php';
+include 'config/koneksi.php';
+$sql = "SElECT * FROM tbl_barang ORDER BY nama_barang ASC";
+$hasil = mysql_query($koneksi, $sql);
+?>
+
+<!DOCTYPE html>
+<html>
+    <head><title>Data Barang - warung abc</title><head>
+    <body>
+        <p><a href="dashboard.php">Kembali ke dashboard </a> | <a href = "tambah_barang.php">Tambah Barang<a></p>
+        <table border = "1" cellpadding="6">
+            <tr>
+                <th>Kode</th><th>Nama Barang</th><th>Harga Satuan</th>
+                <th>stok</th><th>kadaluarsa</th><th>aksi</th>
+            </tr>
+            <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
+            <tr>
+                <td><?php echo $row['kode_barang'];?></td>
+                <td><?php echo $row['nama_barang'];?></td>
+                <td><?php echo number_format($row['harga_satuan'],0,',', '.'; ?></td>
+                <td><?php echo $row['stok']; ?></td>
+                <td><?php echo $row['tanggal_kadaluarsa']; ?></td>
+                <td>
+                    <a href="edit_barang.php?id=<?php echo $row['id_barang']; ?>">Editor</a> |
+                     <a href="hapus_barang.php?id=<?php echo $row['id_barang']; ?>"
+                        onclick="return confrim('yakin hapus barang ini?');">Hapus</a>
+                </td>
+            </tr>
+            <?php } ?>
+        </table>
+</body>
+</html>
