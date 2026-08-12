@@ -1,9 +1,10 @@
 <?php
 
-include 'includes/cek_sesssion.php';
+include 'includes/cek_session.php';
 include 'config/koneksi.php';
+
 $sql = "SElECT * FROM tbl_barang ORDER BY nama_barang ASC";
-$hasil = mysql_query($koneksi, $sql);
+$hasil = mysqli_query($koneksi, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ $hasil = mysql_query($koneksi, $sql);
             <tr>
                 <td><?php echo $row['kode_barang'];?></td>
                 <td><?php echo $row['nama_barang'];?></td>
-                <td><?php echo number_format($row['harga_satuan'],0,',', '.'; ?></td>
+                <td><?php echo number_format($row['harga_satuan'],0,',', '.' )?></td>
                 <td><?php echo $row['stok']; ?></td>
                 <td><?php echo $row['tanggal_kadaluarsa']; ?></td>
                 <td>
