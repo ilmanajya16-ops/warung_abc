@@ -1,6 +1,6 @@
 <?php
 //proses_edit_barang.php
-session_start();
+
 include 'includes/cek_session.php';
 includes 'config/koneksi.php';
 

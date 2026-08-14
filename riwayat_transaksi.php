@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'includes/cek_session.php';
 include 'config/koneksi.php';
 
@@ -16,11 +16,13 @@ $hasil = mysqli_query($koneksi,$sql);
     <body>
     <h1>Riwayat Transaksi </h1>
     <table border="1" cellpadding ="6">
+        <tr><th>No. Transaksi</th><th>tanggal</th><th>Kasir</th><th>Total bayar</th></tr>
+        <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
     <tr>
         <td><?php echo $row['no_transaksi']; ?></td>
          <td><?php echo $row['tanggal']; ?></td>
           <td><?php echo $row['nama_kasir']; ?></td>
-           <td><?php echo number_format$row['total_bayar'],0, ',', '.'); ?></td>
+           <td><?php echo number_format($row['total_bayar'],0, ',', '.'); ?></td>
         </tr>
         <?php } ?>
         </table>
